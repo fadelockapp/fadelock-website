@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fadelock — Secure Password Generator</title>
+  <meta name="description" content="Generate cryptographically secure passwords that self-destruct. Free web password generator by Fadelock — zero-knowledge, no tracking, no accounts required.">
+  <meta name="keywords" content="password generator, secure password, random password, cryptographic, zero-knowledge, privacy, fadelock, encrypted vault">
+  <meta name="author" content="Fadelock">
+  <meta name="theme-color" content="#0D0F14">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fadelock.app/">
+  <meta property="og:title" content="Fadelock — Secure Password Generator">
+  <meta property="og:description" content="Generate cryptographically secure passwords that self-destruct. Zero-knowledge, no tracking, no accounts. Download the app for unlimited generations and an encrypted vault.">
+  <meta property="og:image" content="https://fadelock.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Fadelock">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fadelock — Secure Password Generator">
+  <meta name="twitter:description" content="Generate cryptographically secure passwords that self-destruct. Zero-knowledge, no tracking, no accounts.">
+  <meta name="twitter:image" content="https://fadelock.app/og-image.png">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://fadelock.app/">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Fadelock Password Generator",
+    "url": "https://fadelock.app",
+    "description": "Generate cryptographically secure passwords that self-destruct. Zero-knowledge, no tracking, no accounts required.",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Fadelock",
+      "url": "https://fadelock.app",
+      "email": "fadelockapp@gmail.com"
+    },
+    "softwareApplication": [
+      {
+        "@type": "MobileApplication",
+        "name": "Fadelock",
+        "operatingSystem": "iOS",
+        "applicationCategory": "SecurityApplication",
+        "downloadUrl": "https://apps.apple.com/app/fadelock"
+      },
+      {
+        "@type": "MobileApplication",
+        "name": "Fadelock",
+        "operatingSystem": "Android",
+        "applicationCategory": "SecurityApplication",
+        "downloadUrl": "https://play.google.com/store/apps/details?id=space.manus.securegen"
+      }
+    ]
+  }
+  </script>
+
+  <!-- =============================================
+       Google Analytics 4
+       REPLACE "GA_MEASUREMENT_ID" with your actual ID (e.g., G-XXXXXXXXXX)
+       Find it at: https://analytics.google.com > Admin > Data Streams > Measurement ID
+       ============================================= -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+
+  <!-- =============================================
+       Google AdSense
+       REPLACE "ca-pub-XXXXXXXXXXXXXXXX" with your publisher ID
+       Find it at: https://adsense.google.com > Account > Publisher ID
+       ============================================= -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header with store links -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <img src="icon.png" alt="Fadelock" class="header-logo">
+        <span class="header-title">Fadelock</span>
+      </div>
+      <div class="header-links">
+        <a href="https://apps.apple.com/app/fadelock" target="_blank" rel="noopener" class="store-btn apple-btn" title="Download on the App Store">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <span>App Store</span>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=space.manus.securegen" target="_blank" rel="noopener" class="store-btn google-btn" title="Get it on Google Play">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3.18 23.75c-.36-.17-.68-.52-.68-1.06V1.31c0-.54.32-.89.68-1.06l11.06 11.75L3.18 23.75zm1.4.87l12.52-7.24-2.76-2.93L4.58 24.62zm15.6-10.38c.6.34.82.82.82 1.26s-.22.92-.82 1.26l-2.96 1.71-3.03-3.22 3.03-3.22 2.96 1.71v.5zM4.58-.62l9.76 10.17 2.76-2.93L4.58-.62z"/></svg>
+          <span>Google Play</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Top ad banner -->
+  <div class="ad-slot ad-slot-top">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="TOP_AD_SLOT_ID"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        <span>Privacy-First Password Security</span>
+      </div>
+      <h1 class="hero-title">See it. Use it. <span class="hero-accent">Gone.</span></h1>
+      <p class="hero-subtitle">Fadelock generates cryptographically secure passwords that automatically self-destruct. No logs. No storage. No trace.</p>
+      <div class="hero-store-buttons">
+        <a href="https://apps.apple.com/app/fadelock" target="_blank" rel="noopener" class="hero-store-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="hero-store-text">
+            <span class="hero-store-small">Coming Soon on</span>
+            <span class="hero-store-name">App Store</span>
+          </div>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=space.manus.securegen" target="_blank" rel="noopener" class="hero-store-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3.18 23.75c-.36-.17-.68-.52-.68-1.06V1.31c0-.54.32-.89.68-1.06l11.06 11.75L3.18 23.75zm1.4.87l12.52-7.24-2.76-2.93L4.58 24.62zm15.6-10.38c.6.34.82.82.82 1.26s-.22.92-.82 1.26l-2.96 1.71-3.03-3.22 3.03-3.22 2.96 1.71v.5zM4.58-.62l9.76 10.17 2.76-2.93L4.58-.62z"/></svg>
+          <div class="hero-store-text">
+            <span class="hero-store-small">Coming Soon on</span>
+            <span class="hero-store-name">Google Play</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <main class="main">
+    <div class="content-wrapper">
+      <!-- Left sidebar ad (desktop only) -->
+      <aside class="ad-slot ad-slot-sidebar ad-slot-left">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="LEFT_SIDEBAR_AD_SLOT_ID"
+             data-ad-format="vertical"
+             data-full-width-responsive="false"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </aside>
+
+      <!-- Generator card -->
+      <section class="generator-section">
+        <div class="section-label">TRY IT FREE &mdash; RIGHT HERE</div>
+        <div class="generator-card">
+          <!-- Password display -->
+          <div class="password-display" id="passwordDisplay">
+            <div class="password-empty" id="passwordEmpty">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor" class="lock-icon"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>
+              <span>Press Generate to create a password</span>
+            </div>
+            <div class="password-value-wrapper" id="passwordWrapper" style="display:none;">
+              <span class="password-value" id="passwordValue"></span>
+              <button class="copy-btn" id="copyBtn" title="Copy to clipboard">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              </button>
+            </div>
+            <div class="copy-toast" id="copyToast">Copied! Auto-clears in 15s</div>
+          </div>
+
+          <!-- Timer bar -->
+          <div class="timer-bar-container" id="timerBarContainer" style="display:none;">
+            <div class="timer-bar" id="timerBar"></div>
+            <span class="timer-text" id="timerText">5s</span>
+          </div>
+
+          <!-- Strength indicator -->
+          <div class="strength-row" id="strengthRow">
+            <div class="strength-bar-bg">
+              <div class="strength-bar-fill" id="strengthFill"></div>
+            </div>
+            <div class="strength-info">
+              <span class="strength-label" id="strengthLabel">&mdash;</span>
+              <span class="crack-time" id="crackTime"></span>
+            </div>
+          </div>
+
+          <!-- Length slider -->
+          <div class="control-group">
+            <div class="control-label-row">
+              <label class="control-label">Length: <span class="length-value" id="lengthValue">10</span></label>
+              <span class="length-note">Max 10 on web &middot; 15 with Pro app</span>
+            </div>
+            <input type="range" id="lengthSlider" min="4" max="12" value="10" class="length-slider">
+          </div>
+
+          <!-- Character toggles -->
+          <div class="control-group">
+            <div class="toggle-grid">
+              <button class="toggle-chip active" id="toggleUpper" data-option="uppercase">A-Z</button>
+              <button class="toggle-chip active" id="toggleLower" data-option="lowercase">a-z</button>
+              <button class="toggle-chip active" id="toggleNumbers" data-option="numbers">0-9</button>
+              <button class="toggle-chip" id="toggleSymbols" data-option="symbols">!@#</button>
+            </div>
+          </div>
+
+          <!-- Strength preview -->
+          <div class="strength-preview" id="strengthPreview">
+            <span class="strength-preview-label" id="strengthPreviewLabel">Weak</span>
+            <span class="strength-preview-time" id="strengthPreviewTime">Crack time: minutes</span>
+          </div>
+
+          <!-- Generate button / Cooldown -->
+          <div class="generate-area">
+            <button class="generate-btn" id="generateBtn">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+              <span>Generate Password</span>
+            </button>
+            <div class="cooldown-display" id="cooldownDisplay" style="display:none;">
+              <div class="cooldown-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+              </div>
+              <div class="cooldown-info">
+                <span class="cooldown-label">Next generation available in</span>
+                <span class="cooldown-timer" id="cooldownTimer">00:00:00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle ad (mobile only) -->
+        <div class="ad-slot ad-slot-middle">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-slot="MIDDLE_AD_SLOT_ID"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+      </section>
+
+      <!-- Right sidebar ad (desktop only) -->
+      <aside class="ad-slot ad-slot-sidebar ad-slot-right">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="RIGHT_SIDEBAR_AD_SLOT_ID"
+             data-ad-format="vertical"
+             data-full-width-responsive="false"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <h2 class="section-title">Built for paranoids. Loved by everyone.</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-blue">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        </div>
+        <h3>AES-256 Encrypted Vault</h3>
+        <p>Store credentials encrypted with military-grade encryption. Keys never leave your device.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-green">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+        </div>
+        <h3>Breach Monitoring</h3>
+        <p>Automatic Have I Been Pwned scans on every vault unlock using k-anonymity — your passwords are never transmitted.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-purple">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>
+        </div>
+        <h3>Biometric Lock</h3>
+        <p>Face ID, Touch ID, or device passcode required to access your vault. Zero password-based logins.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-yellow">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        </div>
+        <h3>Auto-Delete Timer</h3>
+        <p>Generated passwords vanish after 30 seconds. No trace, no recovery, no risk.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-red">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71C7.37 7.69 9.48 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3z"/></svg>
+        </div>
+        <h3>Password Health Score</h3>
+        <p>Visual health ring scores your entire vault for breaches, weak passwords, and aging credentials.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-cyan">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <h3>Dark Web Monitoring</h3>
+        <p>24-hour background scans alert you the moment a credential appears in a new breach.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing-section">
+    <h2 class="section-title">Simple, honest pricing</h2>
+    <div class="pricing-table-wrapper">
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th class="pricing-feature-col">Feature</th>
+            <th class="pricing-plan-col">Free</th>
+            <th class="pricing-plan-col pricing-highlight">Pro <span class="pricing-price">$0.99/mo</span></th>
+            <th class="pricing-plan-col pricing-highlight-family">Family <span class="pricing-price">$1.49/mo</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Password generation</td>
+            <td>1 per 12 hrs</td>
+            <td>Unlimited</td>
+            <td>Unlimited</td>
+          </tr>
+          <tr>
+            <td>Auto-delete timer</td>
+            <td>5 seconds</td>
+            <td>30 seconds</td>
+            <td>30 seconds</td>
+          </tr>
+          <tr>
+            <td>Max password length</td>
+            <td>10 chars</td>
+            <td>15 chars</td>
+            <td>15 chars</td>
+          </tr>
+          <tr>
+            <td>Encrypted vault</td>
+            <td>&mdash;</td>
+            <td>20 credentials</td>
+            <td>30 per member</td>
+          </tr>
+          <tr>
+            <td>Breach monitoring</td>
+            <td>&mdash;</td>
+            <td><span class="check-mark">&#10003;</span></td>
+            <td><span class="check-mark">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Cloud sync</td>
+            <td>&mdash;</td>
+            <td><span class="check-mark">&#10003;</span></td>
+            <td><span class="check-mark">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Password history</td>
+            <td>&mdash;</td>
+            <td>Last 5</td>
+            <td>Last 5</td>
+          </tr>
+          <tr>
+            <td>Family members</td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+            <td>Up to 5</td>
+          </tr>
+          <tr>
+            <td>Encrypted sharing</td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+            <td><span class="check-mark">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Ads</td>
+            <td>Yes</td>
+            <td>None</td>
+            <td>None</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <h2 class="cta-title">Your passwords deserve better.</h2>
+    <p class="cta-subtitle">Download Fadelock and take back control of your digital security.</p>
+    <div class="cta-buttons-final">
+      <a href="https://apps.apple.com/app/fadelock" target="_blank" rel="noopener" class="hero-store-btn">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="hero-store-text">
+          <span class="hero-store-small">Coming Soon on</span>
+          <span class="hero-store-name">App Store</span>
+        </div>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=space.manus.securegen" target="_blank" rel="noopener" class="hero-store-btn">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3.18 23.75c-.36-.17-.68-.52-.68-1.06V1.31c0-.54.32-.89.68-1.06l11.06 11.75L3.18 23.75zm1.4.87l12.52-7.24-2.76-2.93L4.58 24.62zm15.6-10.38c.6.34.82.82.82 1.26s-.22.92-.82 1.26l-2.96 1.71-3.03-3.22 3.03-3.22 2.96 1.71v.5zM4.58-.62l9.76 10.17 2.76-2.93L4.58-.62z"/></svg>
+        <div class="hero-store-text">
+          <span class="hero-store-small">Coming Soon on</span>
+          <span class="hero-store-name">Google Play</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Bottom ad banner -->
+  <div class="ad-slot ad-slot-bottom">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="BOTTOM_AD_SLOT_ID"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="icon.png" alt="Fadelock" class="footer-logo">
+        <span>Fadelock</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://fadelockapp.github.io/fadelock-legal/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="https://fadelockapp.github.io/fadelock-legal/terms-of-service.html" target="_blank" rel="noopener">Terms of Service</a>
+        <a href="mailto:fadelockapp@gmail.com">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Fadelock. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Analytics event tracking -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var genBtn = document.getElementById('generateBtn');
+      if (genBtn) {
+        genBtn.addEventListener('click', function() {
+          if (typeof gtag === 'function') {
+            gtag('event', 'generate_password', { event_category: 'engagement', event_label: 'web_generator' });
+          }
+        });
+      }
+      var copyBtn = document.getElementById('copyBtn');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', function() {
+          if (typeof gtag === 'function') {
+            gtag('event', 'copy_password', { event_category: 'engagement', event_label: 'web_generator' });
+          }
+        });
+      }
+      document.querySelectorAll('.store-btn, .hero-store-btn').forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (typeof gtag === 'function') {
+            var store = link.href.includes('apple') ? 'app_store' : 'google_play';
+            gtag('event', 'click_store_link', { event_category: 'conversion', event_label: store });
+          }
+        });
+      });
+    });
+  </script>
+
+  <script src="generator.js"></script>
+</body>
+</html>
