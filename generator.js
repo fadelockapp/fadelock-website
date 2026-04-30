@@ -84,21 +84,36 @@
   }
 
   // ---- Password strength calculation ----
-  // Strength is based ONLY on how many character types are enabled (not length)
-  // 1 type = Weak, 2 types = Fair, 3 types = Strong, 4 types = Very Strong
 
-  function calculateStrength() {
-    const activeCount = [options.uppercase, options.lowercase, options.numbers, options.symbols].filter(Boolean).length;
+  function calculateStrength(password) {
+    if (!password || password.length === 0) {
+      return { score: 0, label: "Very Weak", color: "#EF4444", percentage: 0 };
+    }
 
+    let score = 0;
+    if (password.length >= 4) score += 0.5;
+    if (password.length >= 6) score += 0.5;
+    if (password.length >= 8) score += 0.5;
+    if (password.length >= 10) score += 0.5;
+
+    const hasUpper = /[A-Z]/.test(password);
+    const hasLower = /[a-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSymbol = /[^A-Za-z0-9]/.test(password);
+    const diversity = [hasUpper, hasLower, hasNumber, hasSymbol].filter(Boolean).length;
+    score += diversity * 0.5;
+    score = Math.min(4, score);
+
+    const roundedScore = Math.round(score);
     const levels = [
-      { label: "Weak", color: "#F97316", percentage: 25 },
-      { label: "Weak", color: "#F97316", percentage: 25 },
-      { label: "Fair", color: "#F59E0B", percentage: 50 },
-      { label: "Strong", color: "#22C55E", percentage: 75 },
-      { label: "Very Strong", color: "#10B981", percentage: 100 },
+      { score: 0, label: "Very Weak", color: "#EF4444", percentage: 10 },
+      { score: 1, label: "Weak", color: "#F97316", percentage: 25 },
+      { score: 2, label: "Fair", color: "#F59E0B", percentage: 50 },
+      { score: 3, label: "Strong", color: "#22C55E", percentage: 75 },
+      { score: 4, label: "Very Strong", color: "#10B981", percentage: 100 },
     ];
 
-    return levels[activeCount];
+    return levels[Math.min(roundedScore, 4)];
   }
 
   // ---- Estimated crack time ----
@@ -174,7 +189,20 @@
 
   function updateStrengthPreview() {
     const length = parseInt(lengthSlider.value, 10);
-    const strength = calculateStrength();
+    // Build a representative sample
+    let sampleChars = "";
+    if (options.uppercase) sampleChars += "A";
+    if (options.lowercase) sampleChars += "a";
+    if (options.numbers) sampleChars += "1";
+    if (options.symbols) sampleChars += "!";
+    if (!sampleChars) sampleChars = "Aa1";
+
+    let sample = "";
+    for (let i = 0; i < length; i++) {
+      sample += sampleChars[i % sampleChars.length];
+    }
+
+    const strength = calculateStrength(sample);
     strengthFill.style.width = strength.percentage + "%";
     strengthFill.style.backgroundColor = strength.color;
     strengthLabel.textContent = strength.label;
@@ -192,7 +220,7 @@
     setTimeout(() => passwordDisplay.classList.remove("generating"), 600);
 
     // Update strength for actual password
-    const strength = calculateStrength();
+    const strength = calculateStrength(password);
     strengthFill.style.width = strength.percentage + "%";
     strengthFill.style.backgroundColor = strength.color;
     strengthLabel.textContent = strength.label;
