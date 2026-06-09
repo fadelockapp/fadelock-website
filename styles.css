@@ -48,6 +48,21 @@
   padding: 0;
 }
 
+/* Smooth theme transition */
+body,
+.header,
+.generator-card,
+.password-display,
+.feature-card,
+.pricing-table,
+.toggle-chip,
+.store-btn,
+.theme-toggle,
+.copy-btn,
+.footer {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -799,6 +814,36 @@ body {
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+}
+
+/* Keyboard Hint */
+
+.keyboard-hint {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+  margin-top: 8px;
+  opacity: 0.6;
+}
+
+.keyboard-hint kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--fg);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Hide keyboard hint on mobile (no keyboard) */
+@media (hover: none) {
+  .keyboard-hint {
+    display: none;
+  }
 }
 
 /* Cooldown Display */
