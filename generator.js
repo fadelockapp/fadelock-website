@@ -217,6 +217,8 @@
     if (strengthRow) strengthRow.classList.add("visible");
   }
 
+  let lastActiveCount = 0;
+
   function updateSegments(score) {
     // score 0-4: light up segments progressively with color coding
     // 1 = red (weak), 2 = orange (fair), 3 = yellow (strong), 4 = green (very strong)
@@ -225,11 +227,19 @@
       if (seg) {
         if (i < activeCount) {
           seg.style.backgroundColor = segmentColors[i];
+          // Pulse animation when a new segment lights up
+          if (i >= lastActiveCount) {
+            seg.classList.remove("pulse");
+            void seg.offsetWidth; // force reflow to restart animation
+            seg.classList.add("pulse");
+          }
         } else {
           seg.style.backgroundColor = "";
+          seg.classList.remove("pulse");
         }
       }
     });
+    lastActiveCount = activeCount;
   }
 
   function showPassword(password) {
