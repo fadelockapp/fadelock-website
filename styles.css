@@ -582,6 +582,7 @@ body {
   border-radius: 3px;
   outline: none;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .length-slider::-webkit-slider-thumb {
@@ -625,6 +626,8 @@ body {
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--fg-muted);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   font-size: 0.9375rem;
   font-weight: 600;
   cursor: pointer;
@@ -680,6 +683,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   padding: 16px;
   border-radius: var(--radius-sm);
   border: none;
@@ -1062,6 +1067,53 @@ body {
   .toggle-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 6px;
+  }
+
+  /* Strength segments - slightly taller for touch visibility */
+  .strength-segment {
+    height: 6px;
+  }
+
+  .strength-inline {
+    gap: 10px;
+  }
+
+  .strength-label {
+    font-size: 0.7rem;
+    min-width: 60px;
+  }
+
+  /* Pro badge - ensure touch target is large enough */
+  .pro-badge-link {
+    padding: 4px 2px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .pro-badge {
+    font-size: 0.55rem;
+    padding: 2px 5px;
+  }
+
+  .pro-badge-text {
+    font-size: 0.65rem;
+  }
+
+  /* Tooltip on mobile - show on tap via :active */
+  .strength-label[title]:active::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 120%;
+    right: 0;
+    background: var(--bg-elevated);
+    color: var(--fg);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    white-space: nowrap;
+    pointer-events: none;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
 
   .features-section {
