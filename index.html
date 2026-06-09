@@ -482,6 +482,15 @@
           }
         });
       });
+      // Pro badge click tracking
+      var proBadge = document.querySelector('.pro-badge-link');
+      if (proBadge) {
+        proBadge.addEventListener('click', function() {
+          if (typeof gtag === 'function') {
+            gtag('event', 'click_pro_badge', { event_category: 'conversion', event_label: 'upgrade_interest' });
+          }
+        });
+      }
     });
   </script>
 
