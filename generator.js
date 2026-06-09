@@ -329,7 +329,9 @@
     try {
       await navigator.clipboard.writeText(currentPassword);
       copyToast.classList.add("show");
+      copyBtn.classList.add("copied");
       setTimeout(() => copyToast.classList.remove("show"), 2500);
+      setTimeout(() => copyBtn.classList.remove("copied"), 2000);
 
       // Auto-clear clipboard after 15 seconds
       if (clipboardClearTimer) clearTimeout(clipboardClearTimer);
