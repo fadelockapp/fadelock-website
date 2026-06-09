@@ -204,7 +204,10 @@
           <div class="control-group">
             <div class="control-label-row">
               <label class="control-label">Length: <span class="length-value" id="lengthValue">8</span></label>
-              <span class="length-note">Max 10 &middot; 15 with Pro app</span>
+              <a href="https://play.google.com/store/apps/details?id=space.manus.securegen" target="_blank" rel="noopener" class="pro-badge-link">
+                <span class="pro-badge">PRO</span>
+                <span class="pro-badge-text">Up to 15</span>
+              </a>
             </div>
             <input type="range" id="lengthSlider" min="4" max="10" value="8" class="length-slider">
           </div>
@@ -221,13 +224,13 @@
 
           <!-- Strength indicator -->
           <div class="strength-row" id="strengthRow">
-            <div class="strength-segments">
-              <div class="strength-segment" id="seg1"></div>
-              <div class="strength-segment" id="seg2"></div>
-              <div class="strength-segment" id="seg3"></div>
-              <div class="strength-segment" id="seg4"></div>
-            </div>
-            <div class="strength-info">
+            <div class="strength-inline">
+              <div class="strength-segments">
+                <div class="strength-segment" id="seg1"></div>
+                <div class="strength-segment" id="seg2"></div>
+                <div class="strength-segment" id="seg3"></div>
+                <div class="strength-segment" id="seg4"></div>
+              </div>
               <span class="strength-label" id="strengthLabel" title="">&mdash;</span>
             </div>
           </div>
