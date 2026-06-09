@@ -203,12 +203,16 @@
     }
 
     const strength = calculateStrength(sample);
-    strengthFill.style.width = strength.percentage + "%";
-    strengthFill.style.backgroundColor = strength.color;
-    strengthLabel.textContent = strength.label;
-    strengthLabel.style.color = strength.color;
-    crackTime.textContent = estimateCrackTime(length);
-    strengthRow.classList.add("visible");
+    if (strengthFill) {
+      strengthFill.style.width = strength.percentage + "%";
+      strengthFill.style.backgroundColor = strength.color;
+    }
+    if (strengthLabel) {
+      strengthLabel.textContent = strength.label;
+      strengthLabel.style.color = strength.color;
+    }
+    if (crackTime) crackTime.textContent = estimateCrackTime(length);
+    if (strengthRow) strengthRow.classList.add("visible");
   }
 
   function showPassword(password) {
@@ -221,12 +225,16 @@
 
     // Update strength for actual password
     const strength = calculateStrength(password);
-    strengthFill.style.width = strength.percentage + "%";
-    strengthFill.style.backgroundColor = strength.color;
-    strengthLabel.textContent = strength.label;
-    strengthLabel.style.color = strength.color;
-    crackTime.textContent = estimateCrackTime(password.length);
-    strengthRow.classList.add("visible");
+    if (strengthFill) {
+      strengthFill.style.width = strength.percentage + "%";
+      strengthFill.style.backgroundColor = strength.color;
+    }
+    if (strengthLabel) {
+      strengthLabel.textContent = strength.label;
+      strengthLabel.style.color = strength.color;
+    }
+    if (crackTime) crackTime.textContent = estimateCrackTime(password.length);
+    if (strengthRow) strengthRow.classList.add("visible");
   }
 
   function clearPassword() {
