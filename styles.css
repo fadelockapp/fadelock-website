@@ -25,6 +25,23 @@
   --transition: 0.2s ease;
 }
 
+/* Light theme overrides */
+[data-theme="light"] {
+  --bg: #F8F9FA;
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #F0F2F5;
+  --fg: #1A1D24;
+  --fg-muted: #5F6B7A;
+  --primary: #3B7FE8;
+  --primary-hover: #2B6FD8;
+  --border: #E2E5EA;
+  --success: #16A34A;
+  --warning: #D97706;
+  --error: #DC2626;
+  --accent: #7C3AED;
+  --cyan: #0891B2;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -91,7 +108,50 @@ body {
 
 .header-links {
   display: flex;
+  align-items: center;
   gap: 8px;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--fg-muted);
+  cursor: pointer;
+  transition: all var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle:hover {
+  color: var(--warning);
+  border-color: var(--warning);
+  background: rgba(251, 191, 36, 0.1);
+}
+
+.theme-toggle:active {
+  transform: scale(0.9);
+}
+
+/* Dark mode: show sun icon, hide moon */
+.theme-icon-sun {
+  display: block;
+}
+.theme-icon-moon {
+  display: none;
+}
+
+/* Light mode: show moon icon, hide sun */
+[data-theme="light"] .theme-icon-sun {
+  display: none;
+}
+[data-theme="light"] .theme-icon-moon {
+  display: block;
 }
 
 .store-btn {
@@ -358,6 +418,8 @@ body {
   color: var(--fg-muted);
   transition: all var(--transition);
   flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
 }
 
 .copy-btn:hover {
@@ -368,6 +430,31 @@ body {
 
 .copy-btn:active {
   transform: scale(0.92);
+}
+
+.copy-btn.copied {
+  color: var(--success);
+  border-color: var(--success);
+  background: rgba(52, 211, 153, 0.1);
+  animation: copyPop 0.4s ease;
+}
+
+.copy-btn .copy-icon-check {
+  display: none;
+}
+
+.copy-btn.copied .copy-icon-copy {
+  display: none;
+}
+
+.copy-btn.copied .copy-icon-check {
+  display: block;
+}
+
+@keyframes copyPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 
 .copy-toast {
