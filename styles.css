@@ -432,19 +432,18 @@ body {
   opacity: 1;
 }
 
-.strength-bar-bg {
-  height: 4px;
-  background: var(--bg-elevated);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-bottom: 6px;
+.strength-segments {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
 }
 
-.strength-bar-fill {
-  height: 100%;
-  border-radius: 2px;
-  width: 0%;
-  transition: width 0.4s ease, background-color 0.4s ease;
+.strength-segment {
+  flex: 1;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--bg-elevated);
+  transition: background-color 0.3s ease;
 }
 
 .strength-info {
@@ -456,11 +455,26 @@ body {
 .strength-label {
   font-size: 0.75rem;
   font-weight: 600;
+  cursor: help;
+  position: relative;
 }
 
-.crack-time {
-  font-size: 0.75rem;
-  color: var(--fg-muted);
+.strength-label[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-elevated);
+  color: var(--fg-primary);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 /* Controls */
