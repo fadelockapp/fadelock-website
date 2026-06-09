@@ -32,9 +32,14 @@
   const timerBar = document.getElementById("timerBar");
   const timerText = document.getElementById("timerText");
   const strengthRow = document.getElementById("strengthRow");
-  const strengthFill = document.getElementById("strengthFill");
   const strengthLabel = document.getElementById("strengthLabel");
-  const crackTime = document.getElementById("crackTime");
+  const segments = [
+    document.getElementById("seg1"),
+    document.getElementById("seg2"),
+    document.getElementById("seg3"),
+    document.getElementById("seg4"),
+  ];
+  const segmentColors = ["#EF4444", "#F97316", "#F59E0B", "#22C55E"];
   const lengthSlider = document.getElementById("lengthSlider");
   const lengthValue = document.getElementById("lengthValue");
   const generateBtn = document.getElementById("generateBtn");
@@ -203,16 +208,28 @@
     }
 
     const strength = calculateStrength(sample);
-    if (strengthFill) {
-      strengthFill.style.width = strength.percentage + "%";
-      strengthFill.style.backgroundColor = strength.color;
-    }
+    updateSegments(strength.score);
     if (strengthLabel) {
       strengthLabel.textContent = strength.label;
       strengthLabel.style.color = strength.color;
+      strengthLabel.title = "Crack time: " + estimateCrackTime(length);
     }
-    if (crackTime) crackTime.textContent = estimateCrackTime(length);
     if (strengthRow) strengthRow.classList.add("visible");
+  }
+
+  function updateSegments(score) {
+    // score 0-4: light up segments progressively with color coding
+    // 1 = red (weak), 2 = orange (fair), 3 = yellow (strong), 4 = green (very strong)
+    const activeCount = Math.min(score, 4);
+    segments.forEach((seg, i) => {
+      if (seg) {
+        if (i < activeCount) {
+          seg.style.backgroundColor = segmentColors[i];
+        } else {
+          seg.style.backgroundColor = "";
+        }
+      }
+    });
   }
 
   function showPassword(password) {
@@ -225,15 +242,12 @@
 
     // Update strength for actual password
     const strength = calculateStrength(password);
-    if (strengthFill) {
-      strengthFill.style.width = strength.percentage + "%";
-      strengthFill.style.backgroundColor = strength.color;
-    }
+    updateSegments(strength.score);
     if (strengthLabel) {
       strengthLabel.textContent = strength.label;
       strengthLabel.style.color = strength.color;
+      strengthLabel.title = "Crack time: " + estimateCrackTime(password.length);
     }
-    if (crackTime) crackTime.textContent = estimateCrackTime(password.length);
     if (strengthRow) strengthRow.classList.add("visible");
   }
 
