@@ -76,23 +76,23 @@
 
   <!-- =============================================
        Google Analytics 4
-       REPLACE "G-L8NB10Y0BP" with your actual ID (e.g., G-XXXXXXXXXX)
+       REPLACE "GA_MEASUREMENT_ID" with your actual ID (e.g., G-XXXXXXXXXX)
        Find it at: https://analytics.google.com > Admin > Data Streams > Measurement ID
        ============================================= -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L8NB10Y0BP"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-L8NB10Y0BP');
+    gtag('config', 'GA_MEASUREMENT_ID');
   </script>
 
   <!-- =============================================
        Google AdSense
-       REPLACE "ca-pub-2733489379555109" with your publisher ID
+       REPLACE "ca-pub-XXXXXXXXXXXXXXXX" with your publisher ID
        Find it at: https://adsense.google.com > Account > Publisher ID
        ============================================= -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2733489379555109" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 
   <!-- Fonts & Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -125,7 +125,7 @@
   <div class="ad-slot ad-slot-top">
     <ins class="adsbygoogle"
          style="display:block"
-         data-ad-client="ca-pub-2733489379555109"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
          data-ad-slot="TOP_AD_SLOT_ID"
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
@@ -167,7 +167,7 @@
       <aside class="ad-slot ad-slot-sidebar ad-slot-left">
         <ins class="adsbygoogle"
              style="display:block"
-             data-ad-client="ca-pub-2733489379555109"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
              data-ad-slot="LEFT_SIDEBAR_AD_SLOT_ID"
              data-ad-format="vertical"
              data-full-width-responsive="false"></ins>
@@ -199,24 +199,14 @@
             <span class="timer-text" id="timerText">5s</span>
           </div>
 
-          <!-- Strength indicator -->
-          <div class="strength-row" id="strengthRow">
-            <div class="strength-bar-bg">
-              <div class="strength-bar-fill" id="strengthFill"></div>
-            </div>
-            <div class="strength-info">
-              <span class="strength-label" id="strengthLabel">&mdash;</span>
-              <span class="crack-time" id="crackTime"></span>
-            </div>
-          </div>
 
           <!-- Length slider -->
           <div class="control-group">
             <div class="control-label-row">
-              <label class="control-label">Length: <span class="length-value" id="lengthValue">10</span></label>
-              <span class="length-note">Max 10 on web &middot; 15 with Pro app</span>
+              <label class="control-label">Length: <span class="length-value" id="lengthValue">8</span></label>
+              <span class="length-note">Max 10 &middot; 15 with Pro app</span>
             </div>
-            <input type="range" id="lengthSlider" min="4" max="12" value="10" class="length-slider">
+            <input type="range" id="lengthSlider" min="4" max="10" value="8" class="length-slider">
           </div>
 
           <!-- Character toggles -->
@@ -229,11 +219,6 @@
             </div>
           </div>
 
-          <!-- Strength preview -->
-          <div class="strength-preview" id="strengthPreview">
-            <span class="strength-preview-label" id="strengthPreviewLabel">Weak</span>
-            <span class="strength-preview-time" id="strengthPreviewTime">Crack time: minutes</span>
-          </div>
 
           <!-- Generate button / Cooldown -->
           <div class="generate-area">
@@ -257,7 +242,7 @@
         <div class="ad-slot ad-slot-middle">
           <ins class="adsbygoogle"
                style="display:block"
-               data-ad-client="ca-pub-2733489379555109"
+               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
                data-ad-slot="MIDDLE_AD_SLOT_ID"
                data-ad-format="auto"
                data-full-width-responsive="true"></ins>
@@ -269,7 +254,7 @@
       <aside class="ad-slot ad-slot-sidebar ad-slot-right">
         <ins class="adsbygoogle"
              style="display:block"
-             data-ad-client="ca-pub-2733489379555109"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
              data-ad-slot="RIGHT_SIDEBAR_AD_SLOT_ID"
              data-ad-format="vertical"
              data-full-width-responsive="false"></ins>
@@ -432,7 +417,7 @@
   <div class="ad-slot ad-slot-bottom">
     <ins class="adsbygoogle"
          style="display:block"
-         data-ad-client="ca-pub-2733489379555109"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
          data-ad-slot="BOTTOM_AD_SLOT_ID"
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
