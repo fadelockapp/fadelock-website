@@ -1,0 +1,120 @@
+/* ============================================
+   Legal Pages (Privacy Policy, Terms of Service)
+   ============================================ */
+
+.header-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--fg);
+}
+
+.legal-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+.legal-content h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--fg);
+  margin-bottom: 8px;
+}
+
+.legal-updated {
+  font-size: 0.875rem;
+  color: var(--fg-muted);
+  margin-bottom: 40px;
+}
+
+.legal-content section {
+  margin-bottom: 32px;
+}
+
+.legal-content h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.legal-content h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.legal-content p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--fg-muted);
+  margin-bottom: 12px;
+}
+
+.legal-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+
+.legal-content ul li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--fg-muted);
+  margin-bottom: 8px;
+}
+
+.legal-content ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.legal-content a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.legal-content a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.legal-content strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  .legal-page {
+    padding: 24px 16px 40px;
+  }
+
+  .legal-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .legal-content h2 {
+    font-size: 1.1rem;
+  }
+
+  .legal-content p,
+  .legal-content ul li {
+    font-size: 0.875rem;
+  }
+}
