@@ -367,6 +367,10 @@
     startAutoDeleteTimer();
     updateCooldownUI();
     startCooldownInterval();
+
+    // Increment total generation counter for social proof
+    const totalGens = parseInt(localStorage.getItem('fadelock_total_gens') || '0', 10);
+    localStorage.setItem('fadelock_total_gens', String(totalGens + 1));
   }
 
   // ---- Toggle handlers ----
